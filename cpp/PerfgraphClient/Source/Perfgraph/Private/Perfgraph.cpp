@@ -121,7 +121,7 @@ void FPerfgraph::StartSession(const FOnSessionStarted& SessionStartedDelegate)
 	}
 
 	// Prepare and send a POST request to /api/process
-	TSharedRef<IHttpRequest> Req = FHttpModule::Get().CreateRequest();
+	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Req = FHttpModule::Get().CreateRequest();
 	Req->OnProcessRequestComplete() = HttpDelegate;
 	Req->SetURL(PerfgraphServerUrl + FString(TEXT("/api/session")));
 	Req->SetVerb(TEXT("POST"));
@@ -189,7 +189,7 @@ void FPerfgraph::CaptureFrame(int32 Number, const FString& Description, const st
 		Stats.FrameTime, Stats.GameThreadTime, Stats.RenderThreadTime, Stats.GPUFrameTime, Stats.GPUMemory,
 		Stats.NumTrianglesDrawn, Stats.NumDrawCalls, Stats.NumMeshDrawCalls);
 
-	TSharedRef<IHttpRequest> Req = FHttpModule::Get().CreateRequest();
+	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Req = FHttpModule::Get().CreateRequest();
 	Req->OnProcessRequestComplete() = HttpDelegate;
 	Req->SetURL(FString::Printf(TEXT("%s/api/session/%d/frame"), *PerfgraphServerUrl, CurrentSessionId));
 	Req->SetVerb(TEXT("POST"));

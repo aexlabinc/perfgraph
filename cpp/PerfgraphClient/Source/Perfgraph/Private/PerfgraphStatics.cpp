@@ -107,7 +107,7 @@ void UPerfgraphStatics::CapturePerfgraphFrame(UObject* WorldContextObject, int32
 				FrameTimeSum += StatUnitData->FrameTimes[ActualIndex];
 				GameThreadTimeSum += StatUnitData->GameThreadTimes[ActualIndex];
 				RenderThreadTimeSum += StatUnitData->RenderThreadTimes[ActualIndex];
-				GPUFrameTimeSum += StatUnitData->GPUFrameTimes[ActualIndex];
+				GPUFrameTimeSum += StatUnitData->GPUFrameTimes[ActualIndex][1];
 
 			}
 
