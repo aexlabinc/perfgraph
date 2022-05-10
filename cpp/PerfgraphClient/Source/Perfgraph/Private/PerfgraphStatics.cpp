@@ -115,11 +115,6 @@ void UPerfgraphStatics::CapturePerfgraphFrame(UObject* WorldContextObject, int32
 			Stats.GameThreadTime = GameThreadTimeSum / SampleCount;
 			Stats.RenderThreadTime = RenderThreadTimeSum / SampleCount;
 			Stats.GPUFrameTime = GPUFrameTimeSum / SampleCount;
-#else
-			Stats.FrameTime = StatUnitData->FrameTime;
-			Stats.GameThreadTime = StatUnitData->GameThreadTime;
-			Stats.RenderThreadTime = StatUnitData->RenderThreadTime;
-			Stats.GPUFrameTime = StatUnitData->GPUFrameTime;
 #endif
 		}
 	}
